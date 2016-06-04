@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package com.lma.controller;
+
+/**
+ * @author RAHUL
+ *
+ */
+public class Person {
+	
+	String name;
+
+}
