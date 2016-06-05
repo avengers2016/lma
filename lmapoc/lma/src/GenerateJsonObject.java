@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,14 @@ public class GenerateJsonObject {
 		CustomerContract CustomerContract =  new  CustomerContract();
 		List<CustomerTransactionsDetails>  customerTransactionsDetails =  new ArrayList<CustomerTransactionsDetails>();
 		
-		CustomerTransactionsDetails CustomerTransactionsDetails1 = new  CustomerTransactionsDetails();
-		CustomerTransactionsDetails CustomerTransactionsDetails2 = new  CustomerTransactionsDetails();
+		CustomerTransactionsDetails CustomerTransactionsDetails1 = new  CustomerTransactionsDetails();		
 		
-		PersonalInfo personalInfo1 = new PersonalInfo();		
+		PersonalInfo personalInfo1 = null;		
 			
-		personalInfo1.setFirstName("John");
-		personalInfo1.setLastName("Doe");
+		for(int i=0;i<20;i++){
+		personalInfo1 = new PersonalInfo();
+		personalInfo1.setFirstName("John"+i);
+		personalInfo1.setLastName("Doe"+i);
 		personalInfo1.setStreet1("1295 Charleston Rd.");
 		personalInfo1.setStreet2("1295 Charleston Rd.");
 		personalInfo1.setCity("Mountain View");
@@ -41,65 +43,63 @@ public class GenerateJsonObject {
 		personalInfo1.setEmail1("jdoe@example.com");
 		personalInfo1.setMaratialStatus("Single");
 		personalInfo1.setChildren("2");
-		
-		
-		//PersonalInfo personalInfo2 = new PersonalInfo();
-		
 		CustomerTransactionsDetails1.setPersonalInfo(personalInfo1);
-		//CustomerTransactionsDetails2.setPersonalInfo(personalInfo2);
 		customerTransactionsDetails.add(CustomerTransactionsDetails1);
-		//customerTransactionsDetails.add(CustomerTransactionsDetails2);
 		
+		}		
+		
+			
 		CustomerContract.setCustomerTransactionsDetails(customerTransactionsDetails);
 		
 		
 		List<TansactionsDetails> tansactionsDetails = new ArrayList<TansactionsDetails>();
-		
-		TansactionsDetails tansactionsDetails1 = new TansactionsDetails();
-		tansactionsDetails1.setDescription("This is the payment transaction description.");
-		tansactionsDetails1.setType("travel");		
-		tansactionsDetails1.setCustom("EMS_90048630024435");
-		tansactionsDetails1.setInvoiceNumber("48787589677");
-		tansactionsDetails1.setAllowedPaymentMethod("INSTANT_FUNDING_SOURCE");
-		tansactionsDetails1.setSoftDescriptor("ECHI5786786");
-		
-		//TansactionsDetails tansactionsDetails2 = new TansactionsDetails();
-		tansactionsDetails.add(tansactionsDetails1);
-		//tansactionsDetails.add(tansactionsDetails2);
-		
-		CustomerTransactionsDetails1.setTansactionsDetails(tansactionsDetails);
-		
 		List<ItemList> itemList = new ArrayList<ItemList>();
 		
+		TansactionsDetails tansactionsDetails1=null;
+		
+		for(int i=0;i<50;i++){
+		
+		tansactionsDetails1= new TansactionsDetails();
+		tansactionsDetails1.setDescription("This is the payment transaction description."+i);
+		tansactionsDetails1.setType("travel"+i);		
+		tansactionsDetails1.setCustom("EMS_90048630024435"+i);
+		tansactionsDetails1.setInvoiceNumber("48787589677"+i);
+		tansactionsDetails1.setAllowedPaymentMethod("INSTANT_FUNDING_SOURCE"+i);
+		tansactionsDetails1.setSoftDescriptor("ECHI5786786"+i);
+		tansactionsDetails.add(tansactionsDetails1);
+		
+		ItemList itemList1 =null;
+		
+		for(int j=0;j<5;j++){	
+			itemList1 = new ItemList();
+			itemList1.setName("bowling"+j);
+			itemList1.setDescription("Bowling Team Shirt"+j);
+			itemList1.setPrice("5"+j);
+			itemList1.setQuantity("3"+j);
+			itemList1.setTax("0.03");
+			itemList1.setCurrency("GBP");		
+			itemList.add(itemList1);
 			
-		ItemList itemList1 = new ItemList();
-		itemList1.setName("bowling");
-		itemList1.setDescription("Bowling Team Shirt");
-		itemList1.setPrice("5");
-		itemList1.setQuantity("3");
-		itemList1.setTax("0.03");
-		itemList1.setCurrency("GBP");
+			ShippingAddress shippingAddress = new ShippingAddress();
+			shippingAddress.setRecipientName("Betsy Buyer");
+			shippingAddress.setLine1("111 First Street");
+			shippingAddress.setCity("Saratoga");
+			shippingAddress.setCountryCode("UK");
+			shippingAddress.setPostalCode("95070");
+			shippingAddress.setState("glassgow");			
+			itemList1.setShippingAddress(shippingAddress);
+			
+			}
+			
+			tansactionsDetails1.setItemList(itemList);
+		}
 		
-		//ItemList itemList2 = new ItemList();
-		itemList.add(itemList1);
-		//itemList.add(itemList2);
 		
-		tansactionsDetails1.setItemList(itemList);
-		
-		
-		ShippingAddress shippingAddress = new ShippingAddress();
-		shippingAddress.setRecipientName("Betsy Buyer");
-		shippingAddress.setLine1("111 First Street");
-		shippingAddress.setCity("Saratoga");
-		shippingAddress.setCountryCode("UK");
-		shippingAddress.setPostalCode("95070");
-		shippingAddress.setState("glassgow");
-		
-		itemList1.setShippingAddress(shippingAddress);
+		CustomerTransactionsDetails1.setTansactionsDetails(tansactionsDetails);		
 		
 		
 		try {
-		   
+		   mapper.writeValue(new File("D:\\JsonWith20Data.json"), CustomerContract);
 		   System.out.println( mapper.writeValueAsString(CustomerContract));
 		}
 
