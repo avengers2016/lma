@@ -21,9 +21,9 @@ public class FacebookConnection {
 				// Set application id, secret key and access token
 				confBuilder.setOAuthAppId("1555610554733722");
 				confBuilder.setOAuthAppSecret("bb2458c96cd6f563b077e2bdfab12f39");
-				confBuilder.setOAuthAccessToken("EAAWG0c6GFJoBAPLoXE3BXsh9DznLfeN5NOk7wMUOiq6jqzx70KfWZBkFi3AWN4ZC9RuYaguU6v6CocpZBTmjNO4kV6SH6zDaZB9BYIwudaLxC12Gx7Yx4IZC5ZCywC0TUv874M8Rq4wjyVq8qpsE4ZCDYWzXTirQ7odeKMHPFcyDQZDZD");
+				confBuilder.setOAuthAccessToken("EAAWG0c6GFJoBAMoDD07wLM3kc5mzTvKJRjHHgZCibDzd4S5Dq4hXJPmPJVZCWsTWdtbyuQYp7xkMN7ghfijpU1r23JjMY5J4J8JjnbaxfKSQX7QZBmIMQtIyl38Ek9yn1mIkQyE6OuEENgLSaCmyGq0KB4KR4YZD");
 				
-				confBuilder.setUseSSL(false);
+				confBuilder.setUseSSL(true);
 				confBuilder.setJSONStoreEnabled(true);
 				// Create configuration object
 				Configuration configuration = confBuilder.build();
