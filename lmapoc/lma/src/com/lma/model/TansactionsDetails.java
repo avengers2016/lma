@@ -12,8 +12,12 @@ public class TansactionsDetails {
 	private String invoiceNumber;
 	private String allowedPaymentMethod;	
 	private String softDescriptor;
+	private String billingDate;
+	private String totalAmount;
 	
 	private List<ItemList> itemList;
+	
+	private ShippingAddress shippingAddress;
 	/**
 	 * @return the amount
 	 */
@@ -109,6 +113,24 @@ public class TansactionsDetails {
 	 */
 	public void setItemList(List<ItemList> itemList) {
 		this.itemList = itemList;
-	}	
+	}
+	public String getBillingDate() {
+		return billingDate;
+	}
+	public void setBillingDate(String billingDate) {
+		this.billingDate = billingDate;
+	}
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	public String getTotalAmount() {
+		return totalAmount;
+	}
+	public void setTotalAmount(String totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 
 }

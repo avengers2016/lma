@@ -3,6 +3,8 @@
  */
 package com.lma.model;
 
+import java.util.List;
+
 /**
  * @author RAHUL
  *
@@ -24,6 +26,9 @@ public class PersonalInfo {
 	String maratialStatus;	
 	String children;
 	
+	ProfessionalInfo professionalInfo;
+	
+	List<TansactionsDetails> tansactionsDetails;
 	
 	/**
 	 * @return the firstName
@@ -193,7 +198,17 @@ public class PersonalInfo {
 	public void setChildren(String children) {
 		this.children = children;
 	}
-	
-	
+	public List<TansactionsDetails> getTansactionsDetails() {
+		return tansactionsDetails;
+	}
+	public void setTansactionsDetails(List<TansactionsDetails> tansactionsDetails) {
+		this.tansactionsDetails = tansactionsDetails;
+	}
+	public ProfessionalInfo getProfessionalInfo() {
+		return professionalInfo;
+	}
+	public void setProfessionalInfo(ProfessionalInfo professionalInfo) {
+		this.professionalInfo = professionalInfo;
+	}
 
 }
