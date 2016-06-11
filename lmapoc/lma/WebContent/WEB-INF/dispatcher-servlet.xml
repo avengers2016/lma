@@ -12,7 +12,22 @@
 	<context:component-scan base-package="com.lma.*" />
 
 	<mvc:annotation-driven />
+<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+<property name="order" value="1" />
+</bean>
 
+<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+<property name="defaultErrorView" value="uncaughtException" />
+<property name="order" value="2" />
+  <property name="exceptionMappings">
+    <props>
+      <prop key=".DataAccessException">dataAccessFailure</prop>
+      <prop key=".NoSuchRequestHandlingMethodException">resourceNotFound</prop>
+      <prop key=".TypeMismatchException">resourceNotFound</prop>
+      <prop key=".MissingServletRequestParameterException">resourceNotFound</prop>
+    </props>
+  </property>
+</bean>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
