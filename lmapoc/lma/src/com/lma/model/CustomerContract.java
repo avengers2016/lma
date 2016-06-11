@@ -15,6 +15,10 @@ public class CustomerContract {
 	
 	private List<PersonalInfo> personalInfo;
 	private List<ProfessionalInfo> professionalInfo;
+	
+	private PersonalInfo personaInfo;
+	private ProfessionalInfo professionaInfo;
+	
 
 	/**
 	 * @return the customerTransactionsDetails
@@ -47,4 +51,19 @@ public class CustomerContract {
 		this.professionalInfo = professionalInfo;
 	}
 
+	public PersonalInfo getPersonaInfo() {
+		return personaInfo;
+	}
+
+	public void setPersonaInfo(PersonalInfo personaInfo) {
+		this.personaInfo = personaInfo;
+	}
+
+	public ProfessionalInfo getProfessionaInfo() {
+		return professionaInfo;
+	}
+
+	public void setProfessionaInfo(ProfessionalInfo professionaInfo) {
+		this.professionaInfo = professionaInfo;
+	}
 }
