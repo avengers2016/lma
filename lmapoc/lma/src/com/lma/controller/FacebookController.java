@@ -1,5 +1,6 @@
 package com.lma.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lma.exception.CustomGenericException;
 import com.lma.helper.FacebookConnection;
 import com.lma.helper.FacebookDataHandler;
 
@@ -21,19 +23,19 @@ public class FacebookController {
 	Facebook facebook;
   public FacebookController() {
 	  facebook = FacebookConnection.getFacebookConnection();
+	  
 }
   	@ResponseBody
     @RequestMapping(value="/getFacebookLikes",method=RequestMethod.GET)
     public String getFacebookLikes() {
       String responseData = null;
     	try {
+    		if(null == facebook)throw new NullPointerException();
     		responseData =  FacebookDataHandler.getFacebookLikes(facebook);
+    		
+    		
 		} catch (FacebookException e) {
-			StringWriter sw = new StringWriter();
-		      PrintWriter pw = new PrintWriter(sw);
-		      e.printStackTrace(pw);
-		    
-			responseData =sw.toString().toUpperCase();
+			throw new CustomGenericException("ERROR", "Unable to connect");
 		}
 		return responseData;
     }

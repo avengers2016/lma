@@ -156,6 +156,7 @@ public class ProductController {
 		@ResponseBody
 		public String getTransactionDetails(){
 			
+					
 		CustomerContract customerContract = new CustomerContract();
 
 		List<CustomerContract> customerContractList = new ArrayList<CustomerContract>();
