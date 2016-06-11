@@ -186,8 +186,8 @@ public class ProductController {
 		professionalInfo.setCompanyType("cognizant");
 		professionalInfo.setDesignation("");
 		professionalInfo.setSalary("");
-		professionalInfo.setYearOfExp("");
-
+		professionalInfo.setYearOfExp("");		
+		
 		customerContract.setPersonaInfo(personalInfo);
 
 		customerContract.setProfessionaInfo(professionalInfo);
